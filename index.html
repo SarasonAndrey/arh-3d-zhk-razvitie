@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ЖК Развитие</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<style>
+		html { height:100%; }
+		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
+	</style>
+	
+	<link href="form/main.css" rel="stylesheet">
+	<script src="form/jquery.js"></script>
+	<script src="form/masked.js"></script>
+	<script src="form/date.js"></script>
+	<script src="form/main.js"></script>
+</head>
+<body>
+
+<script src="krpano.js"></script>
+
+<div id="pano" style="width:100%;height:100%;">
+	<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br><br>Javascript not activated<br><br></td></tr></table></noscript>
+	<script>
+		embedpano({target: "pano", html5: "auto", mobilescale: 1.0, passQueryParameters: true});
+
+		function loadForm(){
+			var order = document.getElementById("order"); 
+			document.getElementById("krpanoSWFObject").get("layer[order]").sprite.appendChild(order);
+			order.style.display = "";
+		}
+	</script>
+</div>
+
+<div id="order" style="display:none">
+	<div id="head"><span> ЗАЯВКА НА <br> БРОНИРОВАНИЕ </span></div>
+	<form autocomplete="off">
+		<input type="text"   name="name"  style="left:30px;  top:82px;  width:240px" placeholder="Ваше имя"           ontouchstart="this.focus()">
+		<input type="tel"    name="tel"   style="left:30px;  top:150px; width:240px" placeholder="Контактный телефон" ontouchstart="this.focus()" id="phone">
+		<input type="number" name="adult" style="left:30px;  top:223px; width:111px" placeholder="Взрослых"           ontouchstart="this.focus()" min="0">
+		<input type="number" name="child" style="left:159px; top:223px; width:111px" placeholder="Детей"              ontouchstart="this.focus()" min="0">
+		<input type="text"   name="date1" style="left:30px;  top:294px; width:111px" placeholder="Дата заезда"        ontouchstart="event.cancelBubble=true; lcs(this)" onclick="event.cancelBubble=true; lcs(this)" onfocus="this.blur()">
+		<input type="text"   name="date2" style="left:159px; top:294px; width:111px" placeholder="Дата выезда"        ontouchstart="event.cancelBubble=true; lcs(this)" onclick="event.cancelBubble=true; lcs(this)" onfocus="this.blur()">
+	</form>
+	<div id="footer"><span> После отправки заявки наш менеджер <br> свяжется с Вами чтобы уточнить <br> детали бронирования </span></div>
+	<div id="sender" style="cursor:pointer" onclick="send()" ontouchstart="send()"><span> Отправить </span></div>
+	
+	<div class="separator" style="top:138px"></div>
+	<div class="separator" style="top:209px"></div>
+	<div class="separator" style="top:280px"></div>
+	<div class="separator" style="top:350px"></div>
+</div>
+
+</body>
+</html>
